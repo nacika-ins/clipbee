@@ -31,15 +31,22 @@ class ClipHistoryController: NSObject, NSTableViewDataSource,NSTableViewDelegate
         row rowIndex: Int) -> AnyObject!
     {
         
-        comment
+        /// デバッグ
+        //-------------------------------------------------------------------------------
         println(aTableView, aTableColumn, rowIndex)
         
-        switch aTableColumn.indentifer {
-            case "no":
-                return "うんこ"
-            case "copiedText":
-                return "B"
+        
+        /// 選択させる
+        //-------------------------------------------------------------------------------
+        if aTableColumn.identifier == "no" {
+            return dataArray[rowIndex]["no"]
         }
+        else if aTableColumn.identifier == "copiedText" {
+            return dataArray[rowIndex]["copiedText"]
+        }
+        
+        return ""
+        
     }
     
     
