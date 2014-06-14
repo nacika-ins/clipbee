@@ -12,6 +12,7 @@
 		A17D7829194C0B7800DA860E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A17D7828194C0B7800DA860E /* Images.xcassets */; };
 		A17D782C194C0B7800DA860E /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = A17D782A194C0B7800DA860E /* MainMenu.xib */; };
 		A17D7838194C0B7900DA860E /* clipbeeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17D7837194C0B7900DA860E /* clipbeeTests.swift */; };
+		A17D7842194C11A300DA860E /* ClipHistoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17D7841194C11A300DA860E /* ClipHistoryController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +35,7 @@
 		A17D7831194C0B7900DA860E /* clipbeeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = clipbeeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A17D7836194C0B7900DA860E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A17D7837194C0B7900DA860E /* clipbeeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = clipbeeTests.swift; sourceTree = "<group>"; };
+		A17D7841194C11A300DA860E /* ClipHistoryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClipHistoryController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 				A17D7826194C0B7800DA860E /* AppDelegate.swift */,
 				A17D7828194C0B7800DA860E /* Images.xcassets */,
 				A17D782A194C0B7800DA860E /* MainMenu.xib */,
+				A17D7841194C11A300DA860E /* ClipHistoryController.swift */,
 				A17D7822194C0B7800DA860E /* Supporting Files */,
 			);
 			path = clipbee;
@@ -208,6 +211,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A17D7842194C11A300DA860E /* ClipHistoryController.swift in Sources */,
 				A17D7827194C0B7800DA860E /* AppDelegate.swift in Sources */,
 				A17D7825194C0B7800DA860E /* main.swift in Sources */,
 			);
@@ -399,6 +403,7 @@
 				A17D783D194C0B7900DA860E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A17D783E194C0B7900DA860E /* Build configuration list for PBXNativeTarget "clipbeeTests" */ = {
 			isa = XCConfigurationList;
@@ -407,6 +412,7 @@
 				A17D7840194C0B7900DA860E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
