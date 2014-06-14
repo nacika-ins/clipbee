@@ -1,0 +1,414 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A17D7825194C0B7800DA860E /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17D7824194C0B7800DA860E /* main.swift */; };
+		A17D7827194C0B7800DA860E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17D7826194C0B7800DA860E /* AppDelegate.swift */; };
+		A17D7829194C0B7800DA860E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A17D7828194C0B7800DA860E /* Images.xcassets */; };
+		A17D782C194C0B7800DA860E /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = A17D782A194C0B7800DA860E /* MainMenu.xib */; };
+		A17D7838194C0B7900DA860E /* clipbeeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17D7837194C0B7900DA860E /* clipbeeTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A17D7832194C0B7900DA860E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A17D7817194C0B7800DA860E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A17D781E194C0B7800DA860E;
+			remoteInfo = clipbee;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		A17D781F194C0B7800DA860E /* clipbee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = clipbee.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A17D7823194C0B7800DA860E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A17D7824194C0B7800DA860E /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		A17D7826194C0B7800DA860E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A17D7828194C0B7800DA860E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		A17D782B194C0B7800DA860E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		A17D7831194C0B7900DA860E /* clipbeeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = clipbeeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A17D7836194C0B7900DA860E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A17D7837194C0B7900DA860E /* clipbeeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = clipbeeTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A17D781C194C0B7800DA860E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A17D782E194C0B7900DA860E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A17D7816194C0B7800DA860E = {
+			isa = PBXGroup;
+			children = (
+				A17D7821194C0B7800DA860E /* clipbee */,
+				A17D7834194C0B7900DA860E /* clipbeeTests */,
+				A17D7820194C0B7800DA860E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A17D7820194C0B7800DA860E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A17D781F194C0B7800DA860E /* clipbee.app */,
+				A17D7831194C0B7900DA860E /* clipbeeTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A17D7821194C0B7800DA860E /* clipbee */ = {
+			isa = PBXGroup;
+			children = (
+				A17D7826194C0B7800DA860E /* AppDelegate.swift */,
+				A17D7828194C0B7800DA860E /* Images.xcassets */,
+				A17D782A194C0B7800DA860E /* MainMenu.xib */,
+				A17D7822194C0B7800DA860E /* Supporting Files */,
+			);
+			path = clipbee;
+			sourceTree = "<group>";
+		};
+		A17D7822194C0B7800DA860E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A17D7823194C0B7800DA860E /* Info.plist */,
+				A17D7824194C0B7800DA860E /* main.swift */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A17D7834194C0B7900DA860E /* clipbeeTests */ = {
+			isa = PBXGroup;
+			children = (
+				A17D7837194C0B7900DA860E /* clipbeeTests.swift */,
+				A17D7835194C0B7900DA860E /* Supporting Files */,
+			);
+			path = clipbeeTests;
+			sourceTree = "<group>";
+		};
+		A17D7835194C0B7900DA860E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A17D7836194C0B7900DA860E /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A17D781E194C0B7800DA860E /* clipbee */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A17D783B194C0B7900DA860E /* Build configuration list for PBXNativeTarget "clipbee" */;
+			buildPhases = (
+				A17D781B194C0B7800DA860E /* Sources */,
+				A17D781C194C0B7800DA860E /* Frameworks */,
+				A17D781D194C0B7800DA860E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = clipbee;
+			productName = clipbee;
+			productReference = A17D781F194C0B7800DA860E /* clipbee.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A17D7830194C0B7900DA860E /* clipbeeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A17D783E194C0B7900DA860E /* Build configuration list for PBXNativeTarget "clipbeeTests" */;
+			buildPhases = (
+				A17D782D194C0B7900DA860E /* Sources */,
+				A17D782E194C0B7900DA860E /* Frameworks */,
+				A17D782F194C0B7900DA860E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A17D7833194C0B7900DA860E /* PBXTargetDependency */,
+			);
+			name = clipbeeTests;
+			productName = clipbeeTests;
+			productReference = A17D7831194C0B7900DA860E /* clipbeeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A17D7817194C0B7800DA860E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = nacika;
+				TargetAttributes = {
+					A17D781E194C0B7800DA860E = {
+						CreatedOnToolsVersion = 6.0;
+					};
+					A17D7830194C0B7900DA860E = {
+						CreatedOnToolsVersion = 6.0;
+						TestTargetID = A17D781E194C0B7800DA860E;
+					};
+				};
+			};
+			buildConfigurationList = A17D781A194C0B7800DA860E /* Build configuration list for PBXProject "clipbee" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A17D7816194C0B7800DA860E;
+			productRefGroup = A17D7820194C0B7800DA860E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A17D781E194C0B7800DA860E /* clipbee */,
+				A17D7830194C0B7900DA860E /* clipbeeTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A17D781D194C0B7800DA860E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A17D7829194C0B7800DA860E /* Images.xcassets in Resources */,
+				A17D782C194C0B7800DA860E /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A17D782F194C0B7900DA860E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A17D781B194C0B7800DA860E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A17D7827194C0B7800DA860E /* AppDelegate.swift in Sources */,
+				A17D7825194C0B7800DA860E /* main.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A17D782D194C0B7900DA860E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A17D7838194C0B7900DA860E /* clipbeeTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A17D7833194C0B7900DA860E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A17D781E194C0B7800DA860E /* clipbee */;
+			targetProxy = A17D7832194C0B7900DA860E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		A17D782A194C0B7800DA860E /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A17D782B194C0B7800DA860E /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A17D7839194C0B7900DA860E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				METAL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A17D783A194C0B7900DA860E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				METAL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		A17D783C194C0B7900DA860E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = clipbee/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		A17D783D194C0B7900DA860E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = clipbee/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		A17D783F194C0B7900DA860E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/clipbee.app/Contents/MacOS/clipbee";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = clipbeeTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				METAL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+			};
+			name = Debug;
+		};
+		A17D7840194C0B7900DA860E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/clipbee.app/Contents/MacOS/clipbee";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = clipbeeTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				METAL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A17D781A194C0B7800DA860E /* Build configuration list for PBXProject "clipbee" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A17D7839194C0B7900DA860E /* Debug */,
+				A17D783A194C0B7900DA860E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A17D783B194C0B7900DA860E /* Build configuration list for PBXNativeTarget "clipbee" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A17D783C194C0B7900DA860E /* Debug */,
+				A17D783D194C0B7900DA860E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		A17D783E194C0B7900DA860E /* Build configuration list for PBXNativeTarget "clipbeeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A17D783F194C0B7900DA860E /* Debug */,
+				A17D7840194C0B7900DA860E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A17D7817194C0B7800DA860E /* Project object */;
+}
