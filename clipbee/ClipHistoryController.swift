@@ -11,20 +11,35 @@ import AppKit
 
 class ClipHistoryController: NSObject, NSTableViewDataSource,NSTableViewDelegate {
 
-    var dataArray = String[]()
+    var dataArray = [
+        
+        [ "no": "aiueo", "copiedText": "kakikukeko" ]
     
+    ]
+    
+    /// リストに行がどのくらいあるのか返す
+    //-------------------------------------------------------------------------------
     func numberOfRowsInTableView(aTableView: NSTableView!) -> Int {
-        println("A")
-        return 0
+        return dataArray.count
     }
     
-    
-    func tableView(aTableView: NSTableView!,
+    /// テーブルビューの各セルに出力
+    //-------------------------------------------------------------------------------
+    func tableView(
+        aTableView: NSTableView!,
         objectValueForTableColumn aTableColumn: NSTableColumn!,
         row rowIndex: Int) -> AnyObject!
     {
-        println("B")
-        return 0
+        
+        comment
+        println(aTableView, aTableColumn, rowIndex)
+        
+        switch aTableColumn.indentifer {
+            case "no":
+                return "うんこ"
+            case "copiedText":
+                return "B"
+        }
     }
     
     
