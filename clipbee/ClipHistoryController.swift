@@ -15,9 +15,7 @@ import AppKit
 class ClipHistoryController: Controller, NSTableViewDataSource,NSTableViewDelegate {
 
     var dataArray = [
-        
         [ "no": "aiueo", "copiedText": "kakikukeko" ]
-    
     ]
     
     /// リストに行がどのくらいあるのか返す
@@ -47,7 +45,6 @@ class ClipHistoryController: Controller, NSTableViewDataSource,NSTableViewDelega
         else if aTableColumn.identifier == "copiedText" {
             return dataArray[rowIndex]["copiedText"]
         }
-        
         return ""
         
     }
