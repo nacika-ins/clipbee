@@ -9,7 +9,10 @@
 import Cocoa
 import AppKit
 
-class ClipHistoryController: NSObject, NSTableViewDataSource,NSTableViewDelegate {
+
+/// 現在コピーされているテキストを表示するためのコントローラー
+//-------------------------------------------------------------------------------
+class ClipHistoryController: Controller, NSTableViewDataSource,NSTableViewDelegate {
 
     var dataArray = [
         
