@@ -31,13 +31,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         //-------------------------------------------------------------------------------
         cm.clipboardCaptureStart()
 
-
-
-        
-        /// クリップボードの監視を開始する
-        //-------------------------------------------------------------------------------
-        
-        
         // Insert code here to initialize your application
         println("起動が完了しました")
         
