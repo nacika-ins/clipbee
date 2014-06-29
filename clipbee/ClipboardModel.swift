@@ -68,7 +68,10 @@ class ClipboardModel: Model {
     /// クリップボード監視処理
     //-------------------------------------------------------------------------------
     func clipboardWatcher() {
+        
+        
         println("スレッドが起動しました")
+        
         while(true) {
             
             /// デバッグ
@@ -84,8 +87,6 @@ class ClipboardModel: Model {
             NSThread.sleepForTimeInterval(1.0)
         }
     }
-    
-    
 
 
 }

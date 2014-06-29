@@ -44,6 +44,7 @@
 		A17D7836194C0B7900DA860E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A17D7837194C0B7900DA860E /* clipbeeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = clipbeeTests.swift; sourceTree = "<group>"; };
 		A17D7841194C11A300DA860E /* ClipHistoryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClipHistoryController.swift; sourceTree = "<group>"; };
+		A1F1A6DF194D8106009FE11C /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +87,7 @@
 		A17D7816194C0B7800DA860E = {
 			isa = PBXGroup;
 			children = (
+				A1F1A6DF194D8106009FE11C /* MyPlayground.playground */,
 				A17D7821194C0B7800DA860E /* clipbee */,
 				A17D7834194C0B7900DA860E /* clipbeeTests */,
 				A17D7820194C0B7800DA860E /* Products */,
