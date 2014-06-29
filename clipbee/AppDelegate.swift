@@ -25,7 +25,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         /// クリップボードモデルインスタンスの生成
         //-------------------------------------------------------------------------------
-        var cm = ClipboardModel.sharedInstance()
+        var cm = ClipboardModel.sharedInstance
         
         /// クリップボードの監視を行う
         //-------------------------------------------------------------------------------

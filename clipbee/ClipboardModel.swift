@@ -8,25 +8,22 @@
 
 import Cocoa
 
-var clipboardModelSharedInstanceVariable: ClipboardModel! = nil
-
 class ClipboardModel: Model {
     
-    /// クラスメソッド
+    /// シングルトン
+    /// @example var cm = ClipboardModel.sharedInstance
     //-------------------------------------------------------------------------------
-    class func sharedInstance() -> ClipboardModel {
-        if (clipboardModelSharedInstanceVariable == nil) {
-            return ClipboardModel()
-        }
-        else {
-            return clipboardModelSharedInstanceVariable
-        }
-        
+    class var sharedInstance: ClipboardModel {
+    struct Singleton {
+        static let instance = ClipboardModel()
+    }
+        return Singleton.instance
     }
     
     /// 初期化
     //-------------------------------------------------------------------------------
     init() {
+        
         
         /// デバッグ
         //-------------------------------------------------------------------------------
@@ -35,9 +32,6 @@ class ClipboardModel: Model {
         /// インスタンス生成
         //-------------------------------------------------------------------------------
         super.init()
-        if (clipboardModelSharedInstanceVariable == nil) {
-            clipboardModelSharedInstanceVariable = self
-        }
         
         /// デバッグ
         //-------------------------------------------------------------------------------
