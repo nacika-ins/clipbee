@@ -23,12 +23,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     //-------------------------------------------------------------------------------
     func applicationDidFinishLaunching(aNotification: NSNotification?) {
         
+        /// デバッグ
+        //-------------------------------------------------------------------------------
+        println("起動が完了しました")
+        
         /// クリップボードモデルインスタンスの生成
         //-------------------------------------------------------------------------------
-        var cm = ClipboardModel.sharedInstance
+        println("クリップボードモデルインスタンスの生成を行います")
+        var cm: ClipboardModel  = ClipboardModel.sharedInstance
         
         /// クリップボードの監視を行う
         //-------------------------------------------------------------------------------
+        println("クリップボードの監視を行います")
         cm.clipboardCaptureStart()
 
         // Insert code here to initialize your application

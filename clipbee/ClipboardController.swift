@@ -17,28 +17,21 @@ class ClipboardController: Controller {
     //-------------------------------------------------------------------------------
     var nspaste: NSPasteboard
     
+    /// シングルトン
+    /// @example var cm = ClipboardModel.sharedInstance
+    //-------------------------------------------------------------------------------
+    class var sharedInstance: ClipboardController {
+    struct Singleton {
+        static let instance = ClipboardController()
+        }
+        return Singleton.instance
+    }
     
     init(){
         
         /// クリップボード履歴インスタンス
         //-------------------------------------------------------------------------------
         self.nspaste = NSPasteboard.generalPasteboard()
-        
-        /// クリップボード履歴を消す
-        //-------------------------------------------------------------------------------
-        self.nspaste.clearContents()
-        
-        /// クリップボードを設定する
-        //-------------------------------------------------------------------------------
-        self.nspaste.setString("せばすやん", forType: NSPasteboardTypeString)
-        
-        /// クリップボードの文字を取得する
-        //-------------------------------------------------------------------------------
-        var hoge = self.nspaste.stringForType(NSPasteboardTypeString)
-        
-        /// デバッグ
-        //-------------------------------------------------------------------------------
-        println(hoge)
         
         /// デバッグ
         //-------------------------------------------------------------------------------
@@ -47,9 +40,23 @@ class ClipboardController: Controller {
         
     }
     
-
-
+    /// クリップボードを消す
+    //-------------------------------------------------------------------------------
+    func clearPasteBoard () {
+        self.nspaste.clearContents()
+    }
     
+    /// クリップボードにテキストをコピーする
+    //-------------------------------------------------------------------------------
+    func setPasteBoard(text: String) {
+        self.nspaste.setString("せばすやん", forType: NSPasteboardTypeString)
+    }
+    
+    /// クリップボードの文字を取得する
+    //-------------------------------------------------------------------------------
+    func pasteBoardText() -> String {
+        return self.nspaste.stringForType(NSPasteboardTypeString)
+    }
     
     // [[NSPasteboard generalPasteboard] clearContents];
     // [[NSPasteboard generalPasteboard] setString:helloField.stringValue  forType:NSStringPboardType];

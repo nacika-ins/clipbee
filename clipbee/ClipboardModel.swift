@@ -8,17 +8,24 @@
 
 import Cocoa
 
+
+
 class ClipboardModel: Model {
     
+    
     /// シングルトン
-    /// @example var cm = ClipboardModel.sharedInstance
     //-------------------------------------------------------------------------------
-    class var sharedInstance: ClipboardModel {
+    class var sharedInstance : ClipboardModel
+        {
     struct Singleton {
         static let instance = ClipboardModel()
-    }
+        }
         return Singleton.instance
     }
+    
+    /// インスタンスの取得
+    //-------------------------------------------------------------------------------
+    var clipCon = ClipboardController.sharedInstance
     
     /// 初期化
     //-------------------------------------------------------------------------------
@@ -64,6 +71,9 @@ class ClipboardModel: Model {
     func clipboardWatcher() {
         
         var loopCount = 0;
+        
+        /// デバッグ
+        //-------------------------------------------------------------------------------
         println("スレッドが起動しました")
         
         while(true) {
@@ -78,6 +88,7 @@ class ClipboardModel: Model {
             
             /// クリップボード履歴の取得
             //-------------------------------------------------------------------------------
+            var clipText = self.clipCon.pasteBoardText()
             
             
             /// 処理の待機
