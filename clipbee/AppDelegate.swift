@@ -29,8 +29,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         /// デバッグとしてテストデータ追加
         //-------------------------------------------------------------------------------
-        println("クリップボードモデルインスタンスの生成を行います")
-        ClipboardModel.create()
+        println("1. クリップボードモデルインスタンスの生成を行います")
+        ClipboardModel.create(["text": "test"])
 
         
    

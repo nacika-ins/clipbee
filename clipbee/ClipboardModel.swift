@@ -12,40 +12,38 @@ import Cocoa
 
 class ClipboardModel: Model {
     
-    
-    /// シングルトン
+    /// initで呼ばれたタイミングではまだnilになっているため、nilを許容します。
     //-------------------------------------------------------------------------------
-    class var sharedInstance : ClipboardModel
-        {
-    struct Singleton {
-        static let instance = ClipboardModel()
-        }
-        return Singleton.instance
+    var text: String?
+    var createdAt: NSDate?
+    var updatedAt: NSDate?
+    var title: String?
+    var isProtect: Bool?
+    
+    /// super.initで呼ばれる初期化。この初期化は super.init()で呼ばれます。
+    //-------------------------------------------------------------------------------
+    init(_ dict: Dictionary<String, String>) {
+        
+        /// ディクショナリからデータを取得しインスタンスを初期化します。
+        //-------------------------------------------------------------------------------
+        println("3. ディクショナリからデータを取得しインスタンスを初期化します。")
+        
+        /// 親クラスのイニシャライザ呼び出し
+        //-------------------------------------------------------------------------------
+        super.init(dict)
+        
+        /// 現在時刻の取得
+        //-------------------------------------------------------------------------------
+        var nowTime: NSDate = NSDate()
+        var updateTime: NSDate = NSDate( timeInterval:0, sinceDate:nowTime )
+        self.text = NSString(string: dict["text"])
+        
+        self.createdAt = nowTime
+        self.updatedAt = updateTime
+        self.isProtect = false
+        
+        
     }
     
-    /// クリップボードコントローラインスタンスの取得
-    //-------------------------------------------------------------------------------
-    // var clipCon = ClipboardController.sharedInstance
-    
-    /// 初期化
-    //-------------------------------------------------------------------------------
-    init() {
-        
-        
-        /// デバッグ
-        //-------------------------------------------------------------------------------
-        // println("ClipboardModelが初期化されました")
-        
-        /// インスタンス生成
-        //-------------------------------------------------------------------------------
-        super.init()
-        
-        /// デバッグ
-        //-------------------------------------------------------------------------------
-        // println(clipboardModelSharedInstanceVariable)
-    }
-    
-
-
 
 }
