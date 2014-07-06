@@ -32,15 +32,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         println("クリップボードモデルインスタンスの生成を行います")
         var cm: ClipboardModel  = ClipboardModel.sharedInstance
         
+        /// クリップボードコントローラインスタンスの取得
+        //-------------------------------------------------------------------------------
+        var clipCon = ClipboardController.sharedInstance
+        
         /// クリップボードの監視を行う
         //-------------------------------------------------------------------------------
         println("クリップボードの監視を行います")
-        cm.clipboardCaptureStart()
+        clipCon.clipboardCaptureStart()
 
-        // Insert code here to initialize your application
+        /// デバッグ
+        //-------------------------------------------------------------------------------
         println("起動が完了しました")
-        
- 
         
     }
 
