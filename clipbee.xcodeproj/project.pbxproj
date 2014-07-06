@@ -69,8 +69,8 @@
 			isa = PBXGroup;
 			children = (
 				A11653EF194C7E2000211E12 /* Controller.swift */,
-				A17D7841194C11A300DA860E /* ClipHistoryController.swift */,
 				A11653E7194C7D5500211E12 /* ClipboardController.swift */,
+				A17D7841194C11A300DA860E /* ClipHistoryController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
