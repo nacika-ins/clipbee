@@ -29,15 +29,22 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         /// デバッグとしてテストデータ追加
         //-------------------------------------------------------------------------------
-        println("クリップボードモデルインスタンスの生成を行います")
-        ClipboardModel.create()
+        println("1. クリップボードモデルインスタンスの生成を行います")
+        
+        /// i
+        //-------------------------------------------------------------------------------
+        ClipboardModel.create("1111")
+        ClipboardModel.create("2222")
+        ClipboardModel.create("3333")
+        ClipboardModel.create("4444")
+        ClipboardModel.create("5555")
 
         
    
         
         /// クリップボードコントローラインスタンスの取得
         //-------------------------------------------------------------------------------
-        var clipCon = ClipboardController.sharedInstance
+        var clipCon = ClipboardController()
         
         /// クリップボードの監視を行う
         //-------------------------------------------------------------------------------

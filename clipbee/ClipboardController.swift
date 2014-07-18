@@ -17,15 +17,7 @@ class ClipboardController: Controller {
     //-------------------------------------------------------------------------------
     var nspaste: NSPasteboard
     
-    /// シングルトン
-    /// @example var cm = ClipboardModel.sharedInstance
-    //-------------------------------------------------------------------------------
-    class var sharedInstance: ClipboardController {
-    struct Singleton {
-        static let instance = ClipboardController()
-        }
-        return Singleton.instance
-    }
+    
     
     init(){
         
@@ -38,6 +30,10 @@ class ClipboardController: Controller {
         println("初期化しました")
         
         
+    }
+    
+    deinit{
+        println("インスタンスが開放されました")
     }
     
     /// クリップボードを消す
@@ -92,6 +88,10 @@ class ClipboardController: Controller {
         //-------------------------------------------------------------------------------
         let appDelegate = NSApplication.sharedApplication().delegate
         
+        /// own
+        //-------------------------------------------------------------------------------
+        let own = self
+        
         /// デバッグ
         //-------------------------------------------------------------------------------
         println("スレッドが起動しました")
@@ -112,7 +112,7 @@ class ClipboardController: Controller {
             
             /// クリップボード履歴の取得
             //-------------------------------------------------------------------------------
-            var clipText = self.pasteBoardText()
+            var clipText = own.pasteBoardText()
             
             
             /// 処理の待機

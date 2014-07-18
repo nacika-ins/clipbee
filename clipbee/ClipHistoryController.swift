@@ -26,28 +26,28 @@ class ClipHistoryController: Controller, NSTableViewDataSource,NSTableViewDelega
     
     /// テーブルビューの各セルに出力
     //-------------------------------------------------------------------------------
-    func tableView(
-        aTableView: NSTableView!,
-        objectValueForTableColumn aTableColumn: NSTableColumn!,
-        row rowIndex: Int) -> AnyObject!
-    {
-        
-        /// デバッグ
-        //-------------------------------------------------------------------------------
-        println(aTableView, aTableColumn, rowIndex)
-        
-        
-        /// 選択させる
-        //-------------------------------------------------------------------------------
-        if aTableColumn.identifier == "no" {
-            return dataArray[rowIndex]["no"]
-        }
-        else if aTableColumn.identifier == "copiedText" {
-            return dataArray[rowIndex]["copiedText"]
-        }
-        return ""
-        
-    }
+//    func tableView(
+//        tableView: NSTableView!,
+//        objectValueForTableColumn aTableColumn: NSTableColumn!,
+//        row rowIndex: Int) -> AnyObject!
+//    {
+//        
+//        /// デバッグ
+//        //-------------------------------------------------------------------------------
+//        println(tableView, aTableColumn, rowIndex)
+//        
+//        
+//        /// 選択させる
+//        //-------------------------------------------------------------------------------
+//        if aTableColumn && aTableColumn.identifier == "no" {
+//            return dataArray[rowIndex]["no"]
+//        }
+//        else if aTableColumn.identifier == "copiedText" {
+//            return dataArray[rowIndex]["copiedText"]
+//        }
+//        return ""
+//        
+//    }
     
     
     

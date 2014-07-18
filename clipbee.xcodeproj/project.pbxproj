@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		A11653E8194C7D5500211E12 /* ClipboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11653E7194C7D5500211E12 /* ClipboardController.swift */; };
-		A11653EC194C7DE900211E12 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11653EB194C7DE900211E12 /* Model.swift */; };
 		A11653EE194C7E0E00211E12 /* ClipboardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11653ED194C7E0E00211E12 /* ClipboardModel.swift */; };
 		A11653F0194C7E2000211E12 /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11653EF194C7E2000211E12 /* Controller.swift */; };
 		A17D7825194C0B7800DA860E /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17D7824194C0B7800DA860E /* main.swift */; };
@@ -31,7 +30,6 @@
 
 /* Begin PBXFileReference section */
 		A11653E7194C7D5500211E12 /* ClipboardController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClipboardController.swift; sourceTree = "<group>"; };
-		A11653EB194C7DE900211E12 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		A11653ED194C7E0E00211E12 /* ClipboardModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClipboardModel.swift; sourceTree = "<group>"; };
 		A11653EF194C7E2000211E12 /* Controller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
 		A17D781F194C0B7800DA860E /* clipbee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = clipbee.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -78,7 +76,6 @@
 		A11653EA194C7DAC00211E12 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				A11653EB194C7DE900211E12 /* Model.swift */,
 				A11653ED194C7E0E00211E12 /* ClipboardModel.swift */,
 			);
 			name = Model;
@@ -241,7 +238,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A11653EC194C7DE900211E12 /* Model.swift in Sources */,
 				A11653E8194C7D5500211E12 /* ClipboardController.swift in Sources */,
 				A11653EE194C7E0E00211E12 /* ClipboardModel.swift in Sources */,
 				A17D7842194C11A300DA860E /* ClipHistoryController.swift in Sources */,
@@ -318,6 +314,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				METAL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_SWIFT_FLAGS = "-target-cpu cyclone";
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -354,6 +351,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				METAL_ENABLE_DEBUG_INFO = NO;
+				OTHER_SWIFT_FLAGS = "-target-cpu cyclone";
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -365,6 +363,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = clipbee/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -376,6 +375,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = clipbee/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
