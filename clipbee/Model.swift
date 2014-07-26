@@ -19,9 +19,9 @@ class Model: NSObject {
     /// 作成されたインスタンスを保持する
     /// @note インスタンスが何度も生成されている？ クラス変数をどうやって定義する？
     //-------------------------------------------------------------------------------
-    class var instances: NSMutableArray {
+    class var instances: [Model] {
         struct Instances {
-            static let instances: NSMutableArray = []
+            static var instances: [Model] = []
         }
         return Instances.instances
     }
@@ -40,8 +40,6 @@ class Model: NSObject {
     //-------------------------------------------------------------------------------
     class func create () {
     
-        
-        
         println(self.instances)
         
     }

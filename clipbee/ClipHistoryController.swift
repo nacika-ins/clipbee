@@ -39,12 +39,12 @@ class ClipHistoryController: Controller, NSTableViewDataSource,NSTableViewDelega
         
         /// 選択させる
         //-------------------------------------------------------------------------------
-        if aTableColumn.identifier == "no" {
-            return dataArray[rowIndex]["no"]
-        }
-        else if aTableColumn.identifier == "copiedText" {
-            return dataArray[rowIndex]["copiedText"]
-        }
+        // if aTableColumn.identifier == "no" {
+        //     return dataArray[rowIndex]["no"]
+        // }
+        // else if aTableColumn.identifier == "copiedText" {
+        //     return dataArray[rowIndex]["copiedText"]
+        // }
         return ""
         
     }

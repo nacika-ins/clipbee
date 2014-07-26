@@ -17,6 +17,9 @@ class ClipboardController: Controller {
     //-------------------------------------------------------------------------------
     var nspaste: NSPasteboard
     
+    var a = ""
+    
+    
     /// シングルトン
     /// @example var cm = ClipboardModel.sharedInstance
     //-------------------------------------------------------------------------------
@@ -29,13 +32,16 @@ class ClipboardController: Controller {
     
     init(){
         
-        /// クリップボード履歴インスタンス
-        //-------------------------------------------------------------------------------
-        self.nspaste = NSPasteboard.generalPasteboard()
-        
         /// デバッグ
         //-------------------------------------------------------------------------------
         println("初期化しました")
+        
+        
+        nspaste = NSPasteboard.generalPasteboard()
+        var targetType = nspaste.availableTypeFromArray([NSPasteboardTypeString])
+        var b = nspaste.stringForType(targetType)
+        
+
         
         
     }
@@ -55,7 +61,7 @@ class ClipboardController: Controller {
     /// クリップボードの文字を取得する
     //-------------------------------------------------------------------------------
     func pasteBoardText() -> String {
-        return self.nspaste.stringForType(NSPasteboardTypeString)
+        return nspaste.stringForType(NSStringPboardType)
     }
     
     /// クリップボードの監視を行う
@@ -75,8 +81,7 @@ class ClipboardController: Controller {
         
         /// スレッド作成
         //-------------------------------------------------------------------------------
-        var nst = NSThread(target:self, selector:"clipboardWatcher", object:nil)
-        nst.start()
+        NSThread.detachNewThreadSelector("clipboardWatcher", toTarget: self, withObject: nil)
         
         return true
         
@@ -87,10 +92,12 @@ class ClipboardController: Controller {
     func clipboardWatcher() {
         
         var loopCount = 0;
+        var clipText: String?
         
         /// appDelegate
         //-------------------------------------------------------------------------------
         let appDelegate = NSApplication.sharedApplication().delegate
+        let b = a
         
         /// デバッグ
         //-------------------------------------------------------------------------------
@@ -112,7 +119,7 @@ class ClipboardController: Controller {
             
             /// クリップボード履歴の取得
             //-------------------------------------------------------------------------------
-            var clipText = self.pasteBoardText()
+            clipText = self.pasteBoardText()
             
             
             /// 処理の待機
