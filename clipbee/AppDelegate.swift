@@ -38,9 +38,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         /// デバッグとしてテストデータ追加
         //-------------------------------------------------------------------------------
         println("クリップボードモデルインスタンスの生成を行います")
-        ClipboardModel.create()
-        
-        
+        ClipboardModel.create("クリップボードの内容1")
+        ClipboardModel.create("クリップボードの内容1")
+        ClipboardModel.create("クリップボードの内容2")
+        ClipboardModel.create("クリップボードの内容2")
+        ClipboardModel.create("クリップボードの内容3")
         
         
         /// クリップボードコントローラインスタンスの取得

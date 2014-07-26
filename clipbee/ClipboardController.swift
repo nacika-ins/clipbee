@@ -122,6 +122,8 @@ class ClipboardController: Controller {
             clipText = self.pasteBoardText()
             
             
+            
+            
             /// 処理の待機
             //-------------------------------------------------------------------------------
             NSThread.sleepForTimeInterval(1.0)

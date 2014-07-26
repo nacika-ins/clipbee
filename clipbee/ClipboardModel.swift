@@ -12,39 +12,49 @@ import Cocoa
 
 class ClipboardModel: Model {
     
-    
-    /// シングルトン
-    //-------------------------------------------------------------------------------
-    class var sharedInstance : ClipboardModel
-        {
-    struct Singleton {
-        static let instance = ClipboardModel()
-        }
-        return Singleton.instance
+    struct Instances {
+        static var instances: [ClipboardModel] = []
     }
-    
-    /// クリップボードコントローラインスタンスの取得
-    //-------------------------------------------------------------------------------
-    // var clipCon = ClipboardController.sharedInstance
-    
+
+    var text: String?
+
+
     /// 初期化
     //-------------------------------------------------------------------------------
-    init() {
+    required init() {
         
-        
-        /// デバッグ
-        //-------------------------------------------------------------------------------
-        // println("ClipboardModelが初期化されました")
+
         
         /// インスタンス生成
         //-------------------------------------------------------------------------------
         super.init()
         
-        /// デバッグ
-        //-------------------------------------------------------------------------------
-        // println(clipboardModelSharedInstanceVariable)
     }
     
+    /// 全てのインスタンスを取得
+    //-------------------------------------------------------------------------------
+    class func all () -> NSArray {
+        return Instances.instances
+        
+    }
+    
+    //// インスタンスの追加 TODO: 将来的にこのクラスを 基底クラスに移動させる
+    //-------------------------------------------------------------------------------
+    class func create (text: String) -> ClipboardModel? {
+        
+        /// 重複したテキストを除外する
+        //-------------------------------------------------------------------------------
+        for i in Instances.instances {
+            if i.text == text {
+                return nil
+            }
+        }
+        
+        var newInstance = self()
+        newInstance.text = text
+        Instances.instances.append( newInstance )
+        return newInstance
+    }
 
 
 
