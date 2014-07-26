@@ -64,7 +64,7 @@ class ClipboardModel: Model {
         
         var newInstance = self()
         newInstance.text = text
-        Instances.instances.append( newInstance )
+        Instances.instances.insert(newInstance, atIndex: 0)
         return newInstance
     }
 
