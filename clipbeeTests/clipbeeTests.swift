@@ -2,10 +2,11 @@
 //  clipbeeTests.swift
 //  clipbeeTests
 //
-//  Created by nacika on 2014/06/14.
+//  Created by nacika on 2014/07/26.
 //  Copyright (c) 2014年 nacika. All rights reserved.
 //
 
+import Cocoa
 import XCTest
 
 class clipbeeTests: XCTestCase {
