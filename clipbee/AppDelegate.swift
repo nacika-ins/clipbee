@@ -27,6 +27,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     //-------------------------------------------------------------------------------
     @IBOutlet weak var clipHistoryTable : NSTableView!
     
+    func getClipHistoryTable () -> NSTableView {
+        return clipHistoryTable
+    }
     
     func applicationDidFinishLaunching(aNotification: NSNotification?) {
         
