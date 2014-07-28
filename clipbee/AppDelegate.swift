@@ -15,7 +15,9 @@
 //  Copyright (c) 2014年 nacika. All rights reserved.
 //
 
+
 import Cocoa
+import Carbon
 
 class AppDelegate: NSObject, NSApplicationDelegate {
 
@@ -56,6 +58,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         //-------------------------------------------------------------------------------
         println("クリップボードの監視を行います")
         clipCon.clipboardCaptureStart()
+        
+        /// ホットキー設定
+        //-------------------------------------------------------------------------------
+        registerHotKeys()
+        
+        /// イベントモニタリング
+        //-------------------------------------------------------------------------------
+        eventWatch()
         
         /// デバッグ
         //-------------------------------------------------------------------------------
@@ -198,5 +208,69 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // If we got here, it is time to quit.
         return .TerminateNow
     }
+    
+    /// ポップアップを出す
+    //-------------------------------------------------------------------------------
+    func showPopup () {
+        
+    }
+    
+    
+    /// イベントの監視を行う アクセシビリティの許可が必要です。
+    //-------------------------------------------------------------------------------
+    func eventWatch () {
+        var state = NSEvent.addGlobalMonitorForEventsMatchingMask(NSEventMask.KeyDownMask, handler: { (event: NSEvent!) -> Void in
+            // cmd + B
+            // println(event.keyCode)
+            
+            // cmdkey
+            var commandKeyPressed = (event.modifierFlags & NSEventModifierFlags.CommandKeyMask)
+            if  ( event.keyCode == 11 && commandKeyPressed ) {
+                println("イベントキャッチ") 
+                showPopup()
+            }
+        } )
+        println("イベントの監視を開始しました")
+        println(NSEventMask.KeyDownMask)
+        println(state)
+    }
+    
+    
+    /// ホットキー設定
+    //-------------------------------------------------------------------------------
+    enum kEventHotKey: Int {
+        case PressedSubtype = 6
+        case ReleasedSubtype = 9
+    }
+    
+    
+    /// CarbonAPI TODO: 未完成だが、いずれ使用できなくなる
+    //-------------------------------------------------------------------------------
+    func registerHotKeys (){
+        
+        var gMyHotKeyRef: Unmanaged<EventHotKeyRef>?
+        var gMyHotKeyID: EventHotKeyID = EventHotKeyID( signature: OSType(FourCharCode(UInt32(UInt(0x1243)))), id: 1 )
+        var eventType: EventTypeSpec = EventTypeSpec( eventClass: OSType(FourCharCode(UInt32(UInt(kEventClassKeyboard)))), eventKind: UInt32(UInt(kEventHotKeyPressed)) )
+        // var applicationEventTarget: EventTarget = GetApplicationEventTarget() as EventTarget
+        
+        // var err : OSStatus = InstallApplicationEventHandler(&globalHotkeyHandler, 1, &eventType, nil, nil)
+        
+        // RegisterEventHotKey(20, UInt32(cmdKey), gMyHotKeyID, GetApplicationEventTarget(), 0, &gMyHotKeyRef)
+        // var state = RegisterEventHotKey(49, UInt32(cmdKey), gMyHotKeyID, applicationEventTarget, 0, &gMyHotKeyRef)
+        // println("ホットキーを登録しました")
+        // println(state)
+    }
+    
+    func sendEvent (event: NSEvent) {
+        println("Hotkey!!!")
+        // if (event.subtype == kEventHotKey.PressedSubtype) {
+        // }
+    }
+    
+    func globalHotkeyHandler(nextHandler: EventHandlerCallRef, anEvent: EventRef, userData: Void) -> OSStatus {
+        println("global!!!")
+        return Int32(0)
+    }
+
     
 }
