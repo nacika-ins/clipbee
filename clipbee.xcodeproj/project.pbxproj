@@ -11,6 +11,8 @@
 		A11653EC194C7DE900211E12 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11653EB194C7DE900211E12 /* Model.swift */; };
 		A11653EE194C7E0E00211E12 /* ClipboardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11653ED194C7E0E00211E12 /* ClipboardModel.swift */; };
 		A11653F0194C7E2000211E12 /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11653EF194C7E2000211E12 /* Controller.swift */; };
+		A13F1A021986B64C00D58478 /* ContextMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13F1A011986B64C00D58478 /* ContextMenuController.swift */; };
+		A13F1A051986C0ED00D58478 /* CustomMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13F1A041986C0ED00D58478 /* CustomMenu.swift */; };
 		A17D7825194C0B7800DA860E /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17D7824194C0B7800DA860E /* main.swift */; };
 		A17D7827194C0B7800DA860E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17D7826194C0B7800DA860E /* AppDelegate.swift */; };
 		A17D7829194C0B7800DA860E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A17D7828194C0B7800DA860E /* Images.xcassets */; };
@@ -35,6 +37,8 @@
 		A11653EB194C7DE900211E12 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		A11653ED194C7E0E00211E12 /* ClipboardModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClipboardModel.swift; sourceTree = "<group>"; };
 		A11653EF194C7E2000211E12 /* Controller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
+		A13F1A011986B64C00D58478 /* ContextMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContextMenuController.swift; sourceTree = "<group>"; };
+		A13F1A041986C0ED00D58478 /* CustomMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomMenu.swift; sourceTree = "<group>"; };
 		A17D781F194C0B7800DA860E /* clipbee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = clipbee.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A17D7823194C0B7800DA860E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A17D7824194C0B7800DA860E /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -74,6 +78,7 @@
 				A11653E7194C7D5500211E12 /* ClipboardController.swift */,
 				A17D7841194C11A300DA860E /* ClipHistoryController.swift */,
 				A1ECE53919843A800036FD7F /* ClipMenuController.swift */,
+				A13F1A011986B64C00D58478 /* ContextMenuController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -85,6 +90,14 @@
 				A11653ED194C7E0E00211E12 /* ClipboardModel.swift */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		A13F1A031986C0D000D58478 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A13F1A041986C0ED00D58478 /* CustomMenu.swift */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 		A17D7816194C0B7800DA860E = {
@@ -112,6 +125,7 @@
 				A17D7826194C0B7800DA860E /* AppDelegate.swift */,
 				A17D7828194C0B7800DA860E /* Images.xcassets */,
 				A17D782A194C0B7800DA860E /* MainMenu.xib */,
+				A13F1A031986C0D000D58478 /* View */,
 				A11653EA194C7DAC00211E12 /* Model */,
 				A11653E9194C7D9500211E12 /* Controller */,
 				A17D7822194C0B7800DA860E /* Supporting Files */,
@@ -247,11 +261,13 @@
 				A11653EC194C7DE900211E12 /* Model.swift in Sources */,
 				A11653E8194C7D5500211E12 /* ClipboardController.swift in Sources */,
 				A11653EE194C7E0E00211E12 /* ClipboardModel.swift in Sources */,
+				A13F1A051986C0ED00D58478 /* CustomMenu.swift in Sources */,
 				A17D7842194C11A300DA860E /* ClipHistoryController.swift in Sources */,
 				A1ECE53A19843A800036FD7F /* ClipMenuController.swift in Sources */,
 				A17D7827194C0B7800DA860E /* AppDelegate.swift in Sources */,
 				A17D7825194C0B7800DA860E /* main.swift in Sources */,
 				A11653F0194C7E2000211E12 /* Controller.swift in Sources */,
+				A13F1A021986B64C00D58478 /* ContextMenuController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

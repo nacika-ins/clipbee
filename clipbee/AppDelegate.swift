@@ -209,17 +209,75 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         return .TerminateNow
     }
     
+    
+    /// <##>
+    //-------------------------------------------------------------------------------
+    func pasteText () {
+    }
+
+    // <##>
+    //-------------------------------------------------------------------------------
+    
+    
     /// ポップアップを出す
     //-------------------------------------------------------------------------------
-    func showPopup () {
+    func showPopup (event: NSEvent) {
         
+        
+        /// マウス座標取得
+        //-------------------------------------------------------------------------------
+        var mouseLocation : NSPoint = NSEvent.mouseLocation()
+        var frame : NSRect = NSMakeRect(mouseLocation.x, mouseLocation.y, 200, 200)
+        
+        /// 透明なウィンドウを作成
+        //-------------------------------------------------------------------------------
+        var newWindow : NSWindow = NSWindow(contentRect: frame, styleMask: NSBorderlessWindowMask, backing: NSBackingStoreType.Buffered, defer: false)
+        newWindow.alphaValue = 0
+        var windowBacking = newWindow.convertRectToBacking(frame)
+        
+        /// 位置情報
+        //-------------------------------------------------------------------------------
+        var location : NSPoint = NSPoint(x: 0, y: 0)
+        var origin : NSPoint = NSPoint(x: 10, y: 20)
+        
+        /// 偽のマウスイベント
+        //-------------------------------------------------------------------------------
+        var eventType = NSEventType.LeftMouseDown
+        var mouseEvent :NSEvent = NSEvent.mouseEventWithType(eventType, location: location, modifierFlags: nil, timestamp: 0, windowNumber: newWindow.windowNumber, context: nil, eventNumber: 0, clickCount: 0, pressure: 0)
+
+        
+        /// メニュー作成
+        //-------------------------------------------------------------------------------
+        var menuView = NSView(frame: NSRect(x: 100, y: 10, width: 100, height: 100))
+        menuView.frame.origin.x = 100
+        menuView.frame.origin.y = 100
+        menuView.bounds.contains(CGRectMake(10, 20, 30, 40))
+        var menu = CustomMenu(title: "Menu")
+        var sel = Selector("pasteText")
+        
+        /// メニューアイテム作成
+        //-------------------------------------------------------------------------------
+    
+        menu.insertItemWithTitle("Beep", action: sel, keyEquivalent: "", atIndex: 0)
+        menu.insertItemWithTitle("Beep", action: sel, keyEquivalent: "", atIndex: 1)
+        menu.insertItemWithTitle("Beep", action: sel, keyEquivalent: "", atIndex: 2)
+        menu.insertItemWithTitle("Beep", action: sel, keyEquivalent: "", atIndex: 3)
+        menu.insertItemWithTitle("Beep", action: sel, keyEquivalent: "", atIndex: 4)
+        menu.insertItemWithTitle("Beep", action: sel, keyEquivalent: "", atIndex: 5)
+        
+        
+
+        
+        /// ポップアップ表示
+        //-------------------------------------------------------------------------------
+        CustomMenu.popUpContextMenu(menu, withEvent: mouseEvent, forView: menuView)
     }
     
     
     /// イベントの監視を行う アクセシビリティの許可が必要です。
     //-------------------------------------------------------------------------------
     func eventWatch () {
-        var state = NSEvent.addGlobalMonitorForEventsMatchingMask(NSEventMask.KeyDownMask, handler: { (event: NSEvent!) -> Void in
+        NSEvent.addGlobalMonitorForEventsMatchingMask(NSEventMask.KeyDownMask, handler: { (event: NSEvent!) -> Void in
             // cmd + B
             // println(event.keyCode)
             
@@ -227,12 +285,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             var commandKeyPressed = (event.modifierFlags & NSEventModifierFlags.CommandKeyMask)
             if  ( event.keyCode == 11 && commandKeyPressed ) {
                 println("イベントキャッチ") 
-                showPopup()
+                NSApp.activateIgnoringOtherApps(true)
+                self.showPopup(event)
             }
         } )
         println("イベントの監視を開始しました")
-        println(NSEventMask.KeyDownMask)
-        println(state)
     }
     
     
