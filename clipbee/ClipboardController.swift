@@ -55,7 +55,7 @@ class ClipboardController: Controller {
     /// クリップボードにテキストをコピーする
     //-------------------------------------------------------------------------------
     func setPasteBoard(text: String) {
-        self.nspaste.setString("せばすやん", forType: NSPasteboardTypeString)
+        self.nspaste.setString(text, forType: NSPasteboardTypeString)
     }
     
     /// クリップボードの文字を取得する

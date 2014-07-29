@@ -29,6 +29,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     //-------------------------------------------------------------------------------
     @IBOutlet weak var clipHistoryTable : NSTableView!
     
+    // クリップボード管理
+    //-------------------------------------------------------------------------------
+    var clipCon : ClipboardController!
+    
     func getClipHistoryTable () -> NSTableView {
         return clipHistoryTable
     }
@@ -52,7 +56,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         /// クリップボードコントローラインスタンスの取得
         //-------------------------------------------------------------------------------
-        var clipCon = ClipboardController.sharedInstance
+        clipCon = ClipboardController.sharedInstance
+        
         
         /// クリップボードの監視を行う
         //-------------------------------------------------------------------------------
@@ -212,7 +217,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     /// <##>
     //-------------------------------------------------------------------------------
-    func pasteText () {
+    func pasteText ( item : NSMenuItem ) {
+        var num : Int = item.keyEquivalent.toInt()!
+        var clipHistory : Array = ClipboardModel.all()
+        var clip = clipHistory[num] as ClipboardModel
+        var text = clip.text
+        ClipboardController.sharedInstance.setPasteBoard(text!)
+        
     }
 
     // <##>
@@ -253,17 +264,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         menuView.frame.origin.y = 100
         menuView.bounds.contains(CGRectMake(10, 20, 30, 40))
         var menu = CustomMenu(title: "Menu")
-        var sel = Selector("pasteText")
+        var sel = Selector("pasteText:")
         
         /// メニューアイテム作成
         //-------------------------------------------------------------------------------
-    
-        menu.insertItemWithTitle("Beep", action: sel, keyEquivalent: "", atIndex: 0)
-        menu.insertItemWithTitle("Beep", action: sel, keyEquivalent: "", atIndex: 1)
-        menu.insertItemWithTitle("Beep", action: sel, keyEquivalent: "", atIndex: 2)
-        menu.insertItemWithTitle("Beep", action: sel, keyEquivalent: "", atIndex: 3)
-        menu.insertItemWithTitle("Beep", action: sel, keyEquivalent: "", atIndex: 4)
-        menu.insertItemWithTitle("Beep", action: sel, keyEquivalent: "", atIndex: 5)
+        var clipHistory = ClipboardModel.all()
+        var count : Int = 0
+        for i in clipHistory {
+            var clip : ClipboardModel = i as ClipboardModel
+            menu.insertItemWithTitle(clip.text, action: sel, keyEquivalent: String(count), atIndex: count)
+            count += 1
+        }
         
         
 
