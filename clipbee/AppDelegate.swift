@@ -73,11 +73,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         //-------------------------------------------------------------------------------
         eventWatch()
         
+        /// メインウィンドウを非表示にする
+        //-------------------------------------------------------------------------------
+        window.orderOut(self)
+        
         /// デバッグ
         //-------------------------------------------------------------------------------
         println("起動が完了しました")
         
     }
+    
     
     func applicationWillTerminate(aNotification: NSNotification?) {
         // Insert code here to tear down your application
