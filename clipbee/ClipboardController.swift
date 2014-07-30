@@ -42,6 +42,7 @@ class ClipboardController: Controller {
         var b = nspaste.stringForType(targetType)
         
 
+
         
         
     }
@@ -52,10 +53,12 @@ class ClipboardController: Controller {
         self.nspaste.clearContents()
     }
     
-    /// クリップボードにテキストをコピーする
+    /// クリップボードにテキストをコピーする (ClearContentしてからでないと挿入できない)
     //-------------------------------------------------------------------------------
     func setPasteBoard(text: String) {
+        self.nspaste.clearContents()
         self.nspaste.setString(text, forType: NSPasteboardTypeString)
+        
     }
     
     /// クリップボードの文字を取得する
