@@ -69,12 +69,43 @@ class ClipboardController: Controller {
         
         /// 非アクティブ化
         //-------------------------------------------------------------------------------
-        let app: NSApplication = NSApplication.sharedApplication()
-        app.deactivate()
+        var app: NSApplication = NSApplication.sharedApplication()
+        // var delegate: AppDelegate = app.delegate as AppDelegate
+        // var windowList = CGWindowListCopyWindowInfo(CGWindowListOption(kCGWindowListOptionOnScreenOnly), CGWindowID(0)).takeRetainedValue().__conversion()
+        // println(windowList)
+        // var activeApp = delegate.activeApp
+        // var activeAppName : String?
+        // var activeAppPath : NSURL?
+        // var activeAppIdentifier : String?
+        
         app.hide(nil)
         app.unhideWithoutActivation()
+        var ws : NSWorkspace = NSWorkspace.sharedWorkspace()
+        var frontMostApp = ws.frontmostApplication
+        frontMostApp.unhide()
         
-        var popTime = dispatch_time(DISPATCH_TIME_NOW, Int64(100 * NSEC_PER_MSEC));
+        // for i in activeApp {
+        //     if i.0 == "NSApplicationName" {
+        //         activeAppName = i.1 as? String
+        //     }
+        //     if i.0 == "NSApplicationPath" {
+        //         activeAppPath = i.1 as? NSURL
+        //     }
+        //     if i.0 == "NSApplicationBundleIdentifier" {
+        //         activeAppIdentifier = i.1 as? String
+        //     }
+        // }
+        
+        // println( activeApp )
+        
+        //ws.launchApplicationAtURL(activeAppPath, options: nil, configuration: nil, error: nil)
+        
+        // var targetDesc : NSAppleEventDescriptor = NSAppleEventDescriptor.nullDescriptor();
+        // ws.launchAppWithBundleIdentifier(activeAppIdentifier, options: nil, additionalEventParamDescriptor: targetDesc, launchIdentifier: nil)
+        
+
+        
+        var popTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0 * NSEC_PER_MSEC));
         dispatch_after(popTime, dispatch_get_main_queue(), {() in
             
             println("🔥🔥🔥🔥 発火 🔥🔥🔥🔥")

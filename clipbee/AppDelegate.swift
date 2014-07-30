@@ -33,6 +33,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     //-------------------------------------------------------------------------------
     var clipCon : ClipboardController!
     
+    // アクティブなアプリ
+    //-------------------------------------------------------------------------------
+    var activeApp : [NSObject : AnyObject]!
+    
     func getClipHistoryTable () -> NSTableView {
         return clipHistoryTable
     }
@@ -243,6 +247,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func showPopup (event: NSEvent) {
         
         
+        // 現在アクティブなアプリを取得
+        //-------------------------------------------------------------------------------
+        activeApp = NSWorkspace.sharedWorkspace().activeApplication()
+        
         /// マウス座標取得
         //-------------------------------------------------------------------------------
         var mouseLocation : NSPoint = NSEvent.mouseLocation()
@@ -253,8 +261,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         var newWindow : NSWindow = NSWindow(contentRect: frame, styleMask: NSBorderlessWindowMask, backing: NSBackingStoreType.Buffered, defer: false)
         newWindow.alphaValue = 0
         var windowBacking = newWindow.convertRectToBacking(frame)
+
         
-        /// 位置情報
+        /// 位置情報window.orderOut(self)window.orderOut(self)
         //-------------------------------------------------------------------------------
         var location : NSPoint = NSPoint(x: 0, y: 0)
         var origin : NSPoint = NSPoint(x: 10, y: 20)
