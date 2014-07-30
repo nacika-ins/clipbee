@@ -229,6 +229,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         var clip = clipHistory[num] as ClipboardModel
         var text = clip.text
         ClipboardController.sharedInstance.setPasteBoard(text!)
+        ClipboardController.sharedInstance.pushPasteKeyboard()
+        
         
     }
 

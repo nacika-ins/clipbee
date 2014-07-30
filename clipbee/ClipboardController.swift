@@ -61,6 +61,46 @@ class ClipboardController: Controller {
         
     }
     
+    
+    
+    // ペーストボタンを押す
+    //-------------------------------------------------------------------------------
+    func pushPasteKeyboard () {
+        
+        /// 非アクティブ化
+        //-------------------------------------------------------------------------------
+        let app: NSApplication = NSApplication.sharedApplication()
+        app.deactivate()
+        app.hide(nil)
+        app.unhideWithoutActivation()
+        
+        var popTime = dispatch_time(DISPATCH_TIME_NOW, Int64(100 * NSEC_PER_MSEC));
+        dispatch_after(popTime, dispatch_get_main_queue(), {() in
+            
+            println("🔥🔥🔥🔥 発火 🔥🔥🔥🔥")
+            
+            
+            
+            // var location : NSPoint = NSEvent.mouseLocation()
+            
+            // var mouseDown : CGEvent = CGEventCreateMouseEvent(nil, kCGEventLeftMouseDown, location, 0).takeUnretainedValue()
+            // CGEventPost(UInt32(kCGHIDEventTap), mouseDown)
+            
+            // var mouseUp : CGEvent = CGEventCreateMouseEvent(nil, kCGEventLeftMouseUp, location, 0).takeUnretainedValue()
+            // CGEventPost(UInt32(kCGHIDEventTap), mouseUp)
+            
+            var keyVDown : CGEvent = CGEventCreateKeyboardEvent (nil, CGKeyCode(9), true).takeUnretainedValue()
+            CGEventSetFlags(keyVDown, UInt64(kCGEventFlagMaskCommand))
+            CGEventPost(UInt32(kCGHIDEventTap), keyVDown)
+            
+            var keyVUp : CGEvent = CGEventCreateKeyboardEvent (nil, CGKeyCode(9), false).takeUnretainedValue()
+            CGEventSetFlags(keyVUp, UInt64(kCGEventFlagMaskCommand))
+            CGEventPost(UInt32(kCGHIDEventTap), keyVUp)
+            
+        })
+        
+    }
+    
     /// クリップボードの文字を取得する
     //-------------------------------------------------------------------------------
     func pasteBoardText() -> String {
