@@ -70,6 +70,13 @@ class ClipboardController: Controller {
         /// 非アクティブ化
         //-------------------------------------------------------------------------------
         var app: NSApplication = NSApplication.sharedApplication()
+        app.hide(nil)
+        app.unhideWithoutActivation()
+        var ws : NSWorkspace = NSWorkspace.sharedWorkspace()
+        var frontMostApp = ws.frontmostApplication
+        frontMostApp.unhide()
+
+        
         // var delegate: AppDelegate = app.delegate as AppDelegate
         // var windowList = CGWindowListCopyWindowInfo(CGWindowListOption(kCGWindowListOptionOnScreenOnly), CGWindowID(0)).takeRetainedValue().__conversion()
         // println(windowList)
@@ -78,11 +85,6 @@ class ClipboardController: Controller {
         // var activeAppPath : NSURL?
         // var activeAppIdentifier : String?
         
-        app.hide(nil)
-        app.unhideWithoutActivation()
-        var ws : NSWorkspace = NSWorkspace.sharedWorkspace()
-        var frontMostApp = ws.frontmostApplication
-        frontMostApp.unhide()
         
         // for i in activeApp {
         //     if i.0 == "NSApplicationName" {
