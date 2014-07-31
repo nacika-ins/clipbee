@@ -327,8 +327,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             // cmdkey
             var commandKeyPressed = (event.modifierFlags & NSEventModifierFlags.CommandKeyMask)
             if  ( event.keyCode == 11 && commandKeyPressed ) {
+                
+                // デバッグ
                 println("イベントキャッチ") 
-                NSApp.activateIgnoringOtherApps(true)
+                
+                // NOをセットすると他のアプリケーションがアクティブでないときだけアクティブになります
+                NSApp.activateIgnoringOtherApps(false)
+                
+                
                 self.showPopup(event)
             }
         } )
