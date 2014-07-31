@@ -81,6 +81,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         //-------------------------------------------------------------------------------
         window.orderOut(self)
         
+        //// アクティブ禁止
+        //-------------------------------------------------------------------------------
+        var app : NSApplication = NSApplication.sharedApplication()
+        app.activateIgnoringOtherApps(true)
+        
         /// デバッグ
         //-------------------------------------------------------------------------------
         println("起動が完了しました")
