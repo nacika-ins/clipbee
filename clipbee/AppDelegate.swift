@@ -276,7 +276,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         /// 偽のマウスイベント
         //-------------------------------------------------------------------------------
         var eventType = NSEventType.LeftMouseDown
-        var mouseEvent :NSEvent = NSEvent.mouseEventWithType(eventType, location: location, modifierFlags: nil, timestamp: 0, windowNumber: newWindow.windowNumber, context: nil, eventNumber: 0, clickCount: 0, pressure: 0)
+        var mouseEvent :NSEvent = NSEvent.mouseEventWithType(
+            eventType,
+            location: location,
+            modifierFlags: nil,
+            timestamp: 0,
+            windowNumber: newWindow.windowNumber,
+            context: nil,
+            eventNumber: 0,
+            clickCount: 0,
+            pressure: 0
+        )
 
         
         /// メニュー作成
