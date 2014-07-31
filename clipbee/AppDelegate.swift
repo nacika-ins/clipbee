@@ -271,7 +271,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         /// 位置情報window.orderOut(self)window.orderOut(self)
         //-------------------------------------------------------------------------------
         var location : NSPoint = NSPoint(x: 0, y: 0)
-        var origin : NSPoint = NSPoint(x: 10, y: 20)
         
         /// 偽のマウスイベント
         //-------------------------------------------------------------------------------
@@ -303,9 +302,25 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         var clipHistory = ClipboardModel.all()
         var count : Int = 0
         for i in clipHistory {
+            
+            
             var clip : ClipboardModel = i as ClipboardModel
-            menu.insertItemWithTitle(clip.text, action: sel, keyEquivalent: String(count), atIndex: count)
-            count += 1
+            
+            if (clip.text) {
+            
+                /// メニュー表示用テキストの切り出し
+                //-------------------------------------------------------------------------------
+                var menuText : String = clip.text!
+                if ( menuText.utf16Count > 40 ) {
+                    var menuTextNS : NSString = clip.text! as NSString
+                    menuTextNS = menuTextNS.substringWithRange(NSRange(location: 0,length: 37)) + "..."
+                    menuText = menuTextNS
+                }
+                
+                menu.insertItemWithTitle(menuText, action: sel, keyEquivalent: String(count), atIndex: count)
+                count += 1
+                
+            }
         }
         
         

@@ -137,7 +137,14 @@ class ClipboardController: Controller {
     /// クリップボードの文字を取得する
     //-------------------------------------------------------------------------------
     func pasteBoardText() -> String {
-        return nspaste.stringForType(NSStringPboardType)
+        
+        /// コピーしたデータがテキストではない場合無視
+        //-------------------------------------------------------------------------------
+        var pasteText = nspaste.stringForType(NSStringPboardType)
+        if ( pasteText ) {
+            return pasteText
+        }
+        return ""
     }
     
     /// クリップボードの監視を行う
