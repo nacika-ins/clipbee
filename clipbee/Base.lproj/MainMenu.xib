@@ -13,7 +13,7 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="clipbee" customModuleProvider="target">
             <connections>
-                <outlet property="clipHistoryTable" destination="edA-wV-2j1" id="z5C-ZV-UrX"/>
+                <outlet property="clipHistoryTable" destination="edA-wV-2j1" id="Bcx-ej-Hzw"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>

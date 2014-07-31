@@ -15,7 +15,9 @@
 //  Copyright (c) 2014年 nacika. All rights reserved.
 //
 
+
 import Cocoa
+import Carbon
 
 class AppDelegate: NSObject, NSApplicationDelegate {
 
@@ -27,6 +29,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     //-------------------------------------------------------------------------------
     @IBOutlet weak var clipHistoryTable : NSTableView!
     
+    // クリップボード管理
+    //-------------------------------------------------------------------------------
+    var clipCon : ClipboardController!
+    
+    // アクティブなアプリ
+    //-------------------------------------------------------------------------------
+    var activeApp : [NSObject : AnyObject]!
+    
+    func getClipHistoryTable () -> NSTableView {
+        return clipHistoryTable
+    }
     
     func applicationDidFinishLaunching(aNotification: NSNotification?) {
         
@@ -38,25 +51,47 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         /// デバッグとしてテストデータ追加
         //-------------------------------------------------------------------------------
         println("クリップボードモデルインスタンスの生成を行います")
-        ClipboardModel.create()
-        
-        
+        // ClipboardModel.create("クリップボードの内容1")
+        // ClipboardModel.create("クリップボードの内容1")
+        // ClipboardModel.create("クリップボードの内容2")
+        // ClipboardModel.create("クリップボードの内容2")
+        // ClipboardModel.create("クリップボードの内容3")
         
         
         /// クリップボードコントローラインスタンスの取得
         //-------------------------------------------------------------------------------
-        var clipCon = ClipboardController.sharedInstance
+        clipCon = ClipboardController.sharedInstance
+        
+        
         
         /// クリップボードの監視を行う
         //-------------------------------------------------------------------------------
         println("クリップボードの監視を行います")
         clipCon.clipboardCaptureStart()
         
+        /// ホットキー設定
+        //-------------------------------------------------------------------------------
+        registerHotKeys()
+        
+        /// イベントモニタリング
+        //-------------------------------------------------------------------------------
+        eventWatch()
+        
+        /// メインウィンドウを非表示にする
+        //-------------------------------------------------------------------------------
+        window.orderOut(self)
+        
+        //// アクティブ禁止
+        //-------------------------------------------------------------------------------
+        var app : NSApplication = NSApplication.sharedApplication()
+        app.activateIgnoringOtherApps(true)
+        
         /// デバッグ
         //-------------------------------------------------------------------------------
         println("起動が完了しました")
         
     }
+    
     
     func applicationWillTerminate(aNotification: NSNotification?) {
         // Insert code here to tear down your application
@@ -193,5 +228,170 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // If we got here, it is time to quit.
         return .TerminateNow
     }
+    
+    
+    /// <##>
+    //-------------------------------------------------------------------------------
+    func pasteText ( item : NSMenuItem ) {
+        var num : Int = item.keyEquivalent.toInt()!
+        var clipHistory : Array = ClipboardModel.all()
+        var clip = clipHistory[num] as ClipboardModel
+        var text = clip.text
+        ClipboardController.sharedInstance.setPasteBoard(text!)
+        ClipboardController.sharedInstance.pushPasteKeyboard()
+        
+        
+    }
+
+    // <##>
+    //-------------------------------------------------------------------------------
+    
+    
+    /// ポップアップを出す
+    //-------------------------------------------------------------------------------
+    func showPopup (event: NSEvent) {
+        
+        
+        // 現在アクティブなアプリを取得
+        //-------------------------------------------------------------------------------
+        activeApp = NSWorkspace.sharedWorkspace().activeApplication()
+        
+        /// マウス座標取得
+        //-------------------------------------------------------------------------------
+        var mouseLocation : NSPoint = NSEvent.mouseLocation()
+        var frame : NSRect = NSMakeRect(mouseLocation.x, mouseLocation.y, 1, 1)
+        
+        /// 透明なウィンドウを作成
+        //-------------------------------------------------------------------------------
+        var newWindow : NSPanel = NSPanel(contentRect: frame, styleMask: NSBorderlessWindowMask, backing: NSBackingStoreType.Buffered, defer: false)
+        newWindow.alphaValue = 0
+        var windowBacking = newWindow.convertRectToBacking(frame)
+
+        
+        /// 位置情報window.orderOut(self)window.orderOut(self)
+        //-------------------------------------------------------------------------------
+        var location : NSPoint = NSPoint(x: 0, y: 0)
+        
+        /// 偽のマウスイベント
+        //-------------------------------------------------------------------------------
+        var eventType = NSEventType.LeftMouseDown
+        var mouseEvent :NSEvent = NSEvent.mouseEventWithType(
+            eventType,
+            location: location,
+            modifierFlags: nil,
+            timestamp: 0,
+            windowNumber: newWindow.windowNumber,
+            context: nil,
+            eventNumber: 0,
+            clickCount: 0,
+            pressure: 0
+        )
+
+        
+        /// メニュー作成
+        //-------------------------------------------------------------------------------
+        var menuView = NSView(frame: NSRect(x: 100, y: 10, width: 100, height: 100))
+        menuView.frame.origin.x = 100
+        menuView.frame.origin.y = 100
+        menuView.bounds.contains(CGRectMake(10, 20, 30, 40))
+        var menu = CustomMenu(title: "Menu")
+        var sel = Selector("pasteText:")
+        
+        /// メニューアイテム作成
+        //-------------------------------------------------------------------------------
+        var clipHistory = ClipboardModel.all()
+        var count : Int = 0
+        for i in clipHistory {
+            
+            
+            var clip : ClipboardModel = i as ClipboardModel
+            
+            if (clip.text) {
+            
+                /// メニュー表示用テキストの切り出し
+                //-------------------------------------------------------------------------------
+                var menuText : String = clip.text!
+                if ( menuText.utf16Count > 40 ) {
+                    var menuTextNS : NSString = clip.text! as NSString
+                    menuTextNS = menuTextNS.substringWithRange(NSRange(location: 0,length: 37)) + "..."
+                    menuText = menuTextNS
+                }
+                
+                menu.insertItemWithTitle(menuText, action: sel, keyEquivalent: String(count), atIndex: count)
+                count += 1
+                
+            }
+        }
+        
+        
+
+        
+        /// ポップアップ表示
+        //-------------------------------------------------------------------------------
+        CustomMenu.popUpContextMenu(menu, withEvent: mouseEvent, forView: menuView)
+    }
+    
+    
+    /// イベントの監視を行う アクセシビリティの許可が必要です。
+    //-------------------------------------------------------------------------------
+    func eventWatch () {
+        NSEvent.addGlobalMonitorForEventsMatchingMask(NSEventMask.KeyDownMask, handler: { (event: NSEvent!) -> Void in
+            // cmd + B
+            // println(event.keyCode)
+            
+            // cmdkey
+            var commandKeyPressed = (event.modifierFlags & NSEventModifierFlags.CommandKeyMask)
+            if  ( event.keyCode == 11 && commandKeyPressed ) {
+                
+                // デバッグ
+                println("イベントキャッチ") 
+                
+                // NOをセットすると他のアプリケーションがアクティブでないときだけアクティブになります
+                NSApp.activateIgnoringOtherApps(false)
+                
+                
+                self.showPopup(event)
+            }
+        } )
+        println("イベントの監視を開始しました")
+    }
+    
+    
+    /// ホットキー設定
+    //-------------------------------------------------------------------------------
+    enum kEventHotKey: Int {
+        case PressedSubtype = 6
+        case ReleasedSubtype = 9
+    }
+    
+    
+    /// CarbonAPI TODO: 未完成だが、いずれ使用できなくなる
+    //-------------------------------------------------------------------------------
+    func registerHotKeys (){
+        
+        var gMyHotKeyRef: Unmanaged<EventHotKeyRef>?
+        var gMyHotKeyID: EventHotKeyID = EventHotKeyID( signature: OSType(FourCharCode(UInt32(UInt(0x1243)))), id: 1 )
+        var eventType: EventTypeSpec = EventTypeSpec( eventClass: OSType(FourCharCode(UInt32(UInt(kEventClassKeyboard)))), eventKind: UInt32(UInt(kEventHotKeyPressed)) )
+        // var applicationEventTarget: EventTarget = GetApplicationEventTarget() as EventTarget
+        
+        // var err : OSStatus = InstallApplicationEventHandler(&globalHotkeyHandler, 1, &eventType, nil, nil)
+        
+        // RegisterEventHotKey(20, UInt32(cmdKey), gMyHotKeyID, GetApplicationEventTarget(), 0, &gMyHotKeyRef)
+        // var state = RegisterEventHotKey(49, UInt32(cmdKey), gMyHotKeyID, applicationEventTarget, 0, &gMyHotKeyRef)
+        // println("ホットキーを登録しました")
+        // println(state)
+    }
+    
+    func sendEvent (event: NSEvent) {
+        println("Hotkey!!!")
+        // if (event.subtype == kEventHotKey.PressedSubtype) {
+        // }
+    }
+    
+    func globalHotkeyHandler(nextHandler: EventHandlerCallRef, anEvent: EventRef, userData: Void) -> OSStatus {
+        println("global!!!")
+        return Int32(0)
+    }
+
     
 }

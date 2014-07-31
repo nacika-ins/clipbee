@@ -42,6 +42,7 @@ class ClipboardController: Controller {
         var b = nspaste.stringForType(targetType)
         
 
+
         
         
     }
@@ -52,16 +53,98 @@ class ClipboardController: Controller {
         self.nspaste.clearContents()
     }
     
-    /// クリップボードにテキストをコピーする
+    /// クリップボードにテキストをコピーする (ClearContentしてからでないと挿入できない)
     //-------------------------------------------------------------------------------
     func setPasteBoard(text: String) {
-        self.nspaste.setString("せばすやん", forType: NSPasteboardTypeString)
+        self.nspaste.clearContents()
+        self.nspaste.setString(text, forType: NSPasteboardTypeString)
+        
+    }
+    
+    
+    
+    // ペーストボタンを押す
+    //-------------------------------------------------------------------------------
+    func pushPasteKeyboard () {
+        
+        /// 非アクティブ化
+        //-------------------------------------------------------------------------------
+        var app: NSApplication = NSApplication.sharedApplication()
+        app.hide(nil)
+        app.unhideWithoutActivation()
+        var ws : NSWorkspace = NSWorkspace.sharedWorkspace()
+        var frontMostApp = ws.frontmostApplication
+        frontMostApp.unhide()
+
+        
+        // var delegate: AppDelegate = app.delegate as AppDelegate
+        // var windowList = CGWindowListCopyWindowInfo(CGWindowListOption(kCGWindowListOptionOnScreenOnly), CGWindowID(0)).takeRetainedValue().__conversion()
+        // println(windowList)
+        // var activeApp = delegate.activeApp
+        // var activeAppName : String?
+        // var activeAppPath : NSURL?
+        // var activeAppIdentifier : String?
+        
+        
+        // for i in activeApp {
+        //     if i.0 == "NSApplicationName" {
+        //         activeAppName = i.1 as? String
+        //     }
+        //     if i.0 == "NSApplicationPath" {
+        //         activeAppPath = i.1 as? NSURL
+        //     }
+        //     if i.0 == "NSApplicationBundleIdentifier" {
+        //         activeAppIdentifier = i.1 as? String
+        //     }
+        // }
+        
+        // println( activeApp )
+        
+        //ws.launchApplicationAtURL(activeAppPath, options: nil, configuration: nil, error: nil)
+        
+        // var targetDesc : NSAppleEventDescriptor = NSAppleEventDescriptor.nullDescriptor();
+        // ws.launchAppWithBundleIdentifier(activeAppIdentifier, options: nil, additionalEventParamDescriptor: targetDesc, launchIdentifier: nil)
+        
+
+        
+        var popTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0 * NSEC_PER_MSEC));
+        dispatch_after(popTime, dispatch_get_main_queue(), {() in
+            
+            println("🔥🔥🔥🔥 発火 🔥🔥🔥🔥")
+            
+            
+            
+            // var location : NSPoint = NSEvent.mouseLocation()
+            
+            // var mouseDown : CGEvent = CGEventCreateMouseEvent(nil, kCGEventLeftMouseDown, location, 0).takeUnretainedValue()
+            // CGEventPost(UInt32(kCGHIDEventTap), mouseDown)
+            
+            // var mouseUp : CGEvent = CGEventCreateMouseEvent(nil, kCGEventLeftMouseUp, location, 0).takeUnretainedValue()
+            // CGEventPost(UInt32(kCGHIDEventTap), mouseUp)
+            
+            var keyVDown : CGEvent = CGEventCreateKeyboardEvent (nil, CGKeyCode(9), true).takeUnretainedValue()
+            CGEventSetFlags(keyVDown, UInt64(kCGEventFlagMaskCommand))
+            CGEventPost(UInt32(kCGHIDEventTap), keyVDown)
+            
+            var keyVUp : CGEvent = CGEventCreateKeyboardEvent (nil, CGKeyCode(9), false).takeUnretainedValue()
+            CGEventSetFlags(keyVUp, UInt64(kCGEventFlagMaskCommand))
+            CGEventPost(UInt32(kCGHIDEventTap), keyVUp)
+            
+        })
+        
     }
     
     /// クリップボードの文字を取得する
     //-------------------------------------------------------------------------------
     func pasteBoardText() -> String {
-        return nspaste.stringForType(NSStringPboardType)
+        
+        /// コピーしたデータがテキストではない場合無視
+        //-------------------------------------------------------------------------------
+        var pasteText = nspaste.stringForType(NSStringPboardType)
+        if ( pasteText ) {
+            return pasteText
+        }
+        return ""
     }
     
     /// クリップボードの監視を行う
@@ -96,8 +179,15 @@ class ClipboardController: Controller {
         
         /// appDelegate
         //-------------------------------------------------------------------------------
-        let appDelegate = NSApplication.sharedApplication().delegate
-        let b = a
+        let appDelegate = NSApplication.sharedApplication().delegate as AppDelegate
+
+        
+        /// <##>
+        //-------------------------------------------------------------------------------
+        let clipcon = ClipboardController.sharedInstance
+        
+        let clipTable = appDelegate.clipHistoryTable
+        clipTable.setNeedsDisplay()
         
         /// デバッグ
         //-------------------------------------------------------------------------------
@@ -109,22 +199,26 @@ class ClipboardController: Controller {
             //-------------------------------------------------------------------------------
             loopCount += 1;
             
-            /// デバッグ
-            //-------------------------------------------------------------------------------
-            println("スレッドループ処理中です \(loopCount)")
-            
-            /// リストに追加
-            //-------------------------------------------------------------------------------
-            
             
             /// クリップボード履歴の取得
             //-------------------------------------------------------------------------------
             clipText = self.pasteBoardText()
             
+            /// リストに追加
+            //-------------------------------------------------------------------------------
+            ClipboardModel.create(clipText!, limitNum: 100)
+            
+            /// リスト更新 (while実行中の場合は、Windowがアクティブでないと更新されない)
+            //-------------------------------------------------------------------------------
+            // clipTable.reloadData()
+            
+            /// デバッグ
+            //-------------------------------------------------------------------------------
+            // println("スレッドループ処理中です \(loopCount) \(clipText!) \(ClipboardModel.count())")
             
             /// 処理の待機
             //-------------------------------------------------------------------------------
-            NSThread.sleepForTimeInterval(1.0)
+            NSThread.sleepForTimeInterval(0.5)
         }
     }
     

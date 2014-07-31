@@ -13,15 +13,27 @@ import AppKit
 /// 現在コピーされているテキストを表示するためのコントローラー
 //-------------------------------------------------------------------------------
 class ClipHistoryController: Controller, NSTableViewDataSource,NSTableViewDelegate {
+    
+
 
     var dataArray = [
         [ "no": "aiueo", "copiedText": "kakikukeko" ]
     ]
     
+    /// シングルトン
+    /// @example var cm = ClipboardModel.sharedInstance
+    //-------------------------------------------------------------------------------
+    class var sharedInstance: ClipHistoryController {
+    struct Singleton {
+        static let instance = ClipHistoryController()
+        }
+        return Singleton.instance
+    }
+    
     /// リストに行がどのくらいあるのか返す
     //-------------------------------------------------------------------------------
     func numberOfRowsInTableView(aTableView: NSTableView!) -> Int {
-        return dataArray.count
+        return ClipboardModel.count()
     }
     
     /// テーブルビューの各セルに出力
@@ -34,48 +46,27 @@ class ClipHistoryController: Controller, NSTableViewDataSource,NSTableViewDelega
         
         /// デバッグ
         //-------------------------------------------------------------------------------
-        println(aTableView, aTableColumn, rowIndex)
+        // println(aTableView, aTableColumn, rowIndex)
         
+        // モデル
+        //-------------------------------------------------------------------------------
+        var m = ClipboardModel.findByIndex(rowIndex)
+        
+        // println(m.text)
         
         /// 選択させる
         //-------------------------------------------------------------------------------
-        // if aTableColumn.identifier == "no" {
-        //     return dataArray[rowIndex]["no"]
-        // }
-        // else if aTableColumn.identifier == "copiedText" {
-        //     return dataArray[rowIndex]["copiedText"]
-        // }
+        if aTableColumn.identifier == "no" {
+            return rowIndex+1
+        }
+        else if aTableColumn.identifier == "copiedText" {
+            return m.text
+        }
         return ""
         
     }
     
-    
-    
-
-    
-    
-//    - (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
-//    {
-//    NSLog(@"%s", __func__);
-//    NSDictionary *data = [_dataArray objectAtIndex:row];
-//    
-//    
-//    if ([[tableColumn identifier] isEqualToString:@"TITLE"]) {
-//    
-//    
-//    return [data objectForKey:@"title"];
-//    } else {
-//    return [data objectForKey:@"description"];
-//    }
-//    }
-    
-//    - (NSInteger)numberOfRowsInTableView:(NSTableView*)tableView
-//    {
-//    NSLog(@"%s", __func__);
-//    
-//    return _dataArray.count;
-//    }
-
-    
+    /// 追加
+    //-------------------------------------------------------------------------------
 
 }
