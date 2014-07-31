@@ -259,11 +259,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         /// マウス座標取得
         //-------------------------------------------------------------------------------
         var mouseLocation : NSPoint = NSEvent.mouseLocation()
-        var frame : NSRect = NSMakeRect(mouseLocation.x, mouseLocation.y, 200, 200)
+        var frame : NSRect = NSMakeRect(mouseLocation.x, mouseLocation.y, 1, 1)
         
         /// 透明なウィンドウを作成
         //-------------------------------------------------------------------------------
-        var newWindow : NSWindow = NSWindow(contentRect: frame, styleMask: NSBorderlessWindowMask, backing: NSBackingStoreType.Buffered, defer: false)
+        var newWindow : NSPanel = NSPanel(contentRect: frame, styleMask: NSBorderlessWindowMask, backing: NSBackingStoreType.Buffered, defer: false)
         newWindow.alphaValue = 0
         var windowBacking = newWindow.convertRectToBacking(frame)
 
