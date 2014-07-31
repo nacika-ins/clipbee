@@ -50,7 +50,7 @@ class ClipHistoryController: Controller, NSTableViewDataSource,NSTableViewDelega
         
         // モデル
         //-------------------------------------------------------------------------------
-        var m = ClipboardModel.find_by_index(rowIndex)
+        var m = ClipboardModel.findByIndex(rowIndex)
         
         // println(m.text)
         

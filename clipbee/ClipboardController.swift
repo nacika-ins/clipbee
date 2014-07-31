@@ -199,7 +199,7 @@ class ClipboardController: Controller {
             
             /// リストに追加
             //-------------------------------------------------------------------------------
-            ClipboardModel.create(clipText!)
+            ClipboardModel.create(clipText!, limitNum: 100)
             
             /// リスト更新 (while実行中の場合は、Windowがアクティブでないと更新されない)
             //-------------------------------------------------------------------------------
