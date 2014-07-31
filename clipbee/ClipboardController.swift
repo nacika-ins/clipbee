@@ -203,15 +203,15 @@ class ClipboardController: Controller {
             
             /// リスト更新 (while実行中の場合は、Windowがアクティブでないと更新されない)
             //-------------------------------------------------------------------------------
-            clipTable.reloadData()
+            // clipTable.reloadData()
             
             /// デバッグ
             //-------------------------------------------------------------------------------
-            println("スレッドループ処理中です \(loopCount) \(clipText!) \(ClipboardModel.count())")
+            // println("スレッドループ処理中です \(loopCount) \(clipText!) \(ClipboardModel.count())")
             
             /// 処理の待機
             //-------------------------------------------------------------------------------
-            NSThread.sleepForTimeInterval(1.0)
+            NSThread.sleepForTimeInterval(0.5)
         }
     }
     
